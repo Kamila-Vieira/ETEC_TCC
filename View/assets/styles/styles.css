@@ -1,0 +1,230 @@
+/* Fontes */
+/* Selecionar weights necessários no https://fonts.google.com/ e alterar o link abaixo */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+/* Variáveis */
+
+:root{
+  --primary-color: #009FE3;
+  --secondary-color: #000;
+  --white: #fff;
+  --input-bg: #FAFAFC;
+  --input-border: #E6E6F0;
+
+  --primary-font: 'Baloo 2', cursive;
+  --secondary-font: 'Poppins', sans-serif;
+}
+
+/* Inicio Footer */
+.footer{
+  background-color: var(--white);
+  height: 43px;
+}
+.footer-container{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-container-text{
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--secondary-color);
+}
+/* Fim Footer */
+
+/* Inicio Principal */
+.principal-main{
+  background-image: linear-gradient(to right, var(--primary-color) 50%, var(--secondary-color) 50%);
+}
+.container{
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+.principal-container{
+  display: flex;
+  justify-content: center;
+}
+
+.principal-container-left{
+  padding: 130px 99px 130px 160px;
+}
+
+.principal-container-title{
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 144px;
+  line-height: 144px;
+  color: var(--white);
+}
+
+.principal-container-subtitle{
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 46px;
+  color: var(--secondary-color);
+}
+.home-btnLogin{
+  border-radius: 8px;
+  width: 202px;
+  height: 58px;
+  background-color: var(--white);
+  border: none;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  cursor: pointer;
+  color: var(--secondary-color);
+  margin-top: 178px;
+  transition: all 0.4s;
+  border: 2px solid var(--white);
+}
+.home-btnLogin i{
+  margin-right: 18px;
+  transition: color 0.3s;
+}
+.home-btnLogin:hover{
+  background-color: var(--primary-color);
+  border-color: var(--white);
+  color: var(--white);
+}
+.home-btnLogin:hover i{
+  color: var(--white);
+}
+.principal-container-banner,
+.principal-container-banner-image{
+  height: 100%;
+}
+
+@media (max-width: 1024px){
+  .principal-container{
+    flex-direction: column;
+  }
+  .principal-main{
+    background-image: none;
+  }
+  .principal-container-left{
+    background-color: var(--primary-color);
+    padding: 70px 30px;
+  }
+  .principal-container-title{
+    font-size: 100px;
+  }
+  .principal-container-subtitle{
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .home-btnLogin{
+    font-size: 22px;
+    margin-top: 70px;
+  }
+  .principal-container-banner-image{
+    width: 100%;
+  }
+}
+/* Fim Principal */
+
+/* Inicio Formulário Login */
+
+.login-form{
+  margin-top: 70px;
+  max-width: 300px;
+  width: 100%;
+}
+.login-form-email,
+.login-form-password{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.login-form-buttons{
+  display: flex;
+  flex-direction: column;
+}
+.login-form-email,
+.login-form-password {
+  margin-bottom: 32px;
+  position: relative;
+}
+.login-form-email label,
+.login-form-password label{
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--secondary-color);
+}
+
+.login-form-email input,
+.login-form-password input{
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 56px;
+  padding: 0 24px;
+  outline: none;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--secondary-color);
+  margin-top: 4px;
+}
+.login-form-email input::placeholder,
+.login-form-password input::placeholder{
+  color: #CCCCCC;
+}
+.login-form-email input:focus,
+.login-form-password input:focus{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.login-form-email input:focus ~ label::after,
+.login-form-password input:focus ~ label::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--secondary-color);
+  width: calc(100% - 48px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.login-btnLogin,
+.login-btnCoordenador{
+  height: 42px;
+  background-color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.login-btnLogin{
+  width: 50%;
+  margin-bottom: 24px;
+}
+.login-btnLogin:hover,
+.login-btnCoordenador:hover{
+  background-color: var(--white);
+  color: var(--secondary-color);
+}
+/* Fim Formulário Login */
+
