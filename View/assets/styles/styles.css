@@ -15,6 +15,14 @@
   --secondary-font: 'Poppins', sans-serif;
 }
 
+body{
+  height: 100vh;
+}
+
+main{
+  height: calc(100% - 43px);
+}
+
 /* Inicio Footer */
 .footer{
   background-color: var(--white);
@@ -48,6 +56,7 @@
 .principal-container{
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 .principal-container-left{
@@ -228,3 +237,27 @@
 }
 /* Fim Formulário Login */
 
+/* Inicio área principal */
+
+.main-area .header{
+  background-color: var(--white);
+  border-radius: 0 0 16px 16px;
+  padding: 20px 0 25px 0;
+  position: relative;
+  z-index: 1;
+}
+.main-area .header-container{
+  margin: 0 auto;
+  max-width: 1250px;
+}
+.main-area .header-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-area-container{
+  background-color: var(--primary-color);
+  margin-top: -16px;
+}
+/* Fim área principal */
