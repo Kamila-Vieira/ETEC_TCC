@@ -30,7 +30,7 @@
         <form action="/Controller/Navegacao.php" method="post" class="main-area-form">
           <nav class="main-area-menu-nav">
             <ul class="main-area-menu-list">
-              <li class="main-area-menu-item"><button name="btnProfAlunosLista">Listagem de Alunos</button></li>
+              <li class="main-area-menu-item"><button name="btnAlunosLista">Listagem de Alunos</button></li>
             </ul>
           </nav>
         </form>

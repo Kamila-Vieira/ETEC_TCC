@@ -33,7 +33,7 @@
               <li class="main-area-menu-item"><button name="btnProfForm">Cadastro de professores</button></li>
               <li class="main-area-menu-item"><button name="btnProfLista">Listagem de professores</button></li>
               <li class="main-area-menu-item"><button name="btnAlunosForm">Cadastro de alunos</button></li>
-              <li class="main-area-menu-item"><button name="btnCordAlunosLista">Listagem de Alunos</button></li>
+              <li class="main-area-menu-item"><button name="btnAlunosLista">Listagem de Alunos</button></li>
             </ul>
           </nav>
         </form>

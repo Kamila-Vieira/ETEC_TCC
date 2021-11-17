@@ -24,5 +24,17 @@
   if(isset($_POST["btnLogout"])){
     include_once '../View/login.php';
   }
+  if(isset($_POST["btnProfForm"])){
+    include_once '../View/formularioProfessores.php';
+  }
+  if(isset($_POST["btnProfLista"])){
+    include_once '../View/listagemProfessores.php';
+  }
+  if(isset($_POST["btnAlunosForm"])){
+    include_once '../View/formularioAluno.php';
+  }
+  if(isset($_POST["btnAlunosLista"])){
+    include_once '../View/listagemAlunos.php';
+  }
 
 ?>
