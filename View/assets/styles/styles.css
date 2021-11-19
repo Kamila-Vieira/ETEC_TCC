@@ -99,7 +99,6 @@ main.main-area-content{
   width: 202px;
   height: 58px;
   background-color: var(--white);
-  border: none;
   font-family: var(--secondary-font);
   font-style: normal;
   font-weight: 600;
@@ -108,20 +107,24 @@ main.main-area-content{
   cursor: pointer;
   color: var(--secondary-color);
   margin-top: 178px;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
   border: 2px solid var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.home-btnLogin i{
+.home-btnLogin svg{
   margin-right: 18px;
-  transition: color 0.3s;
+  transform: rotate(180deg);
 }
+
 .home-btnLogin:hover{
   background-color: var(--primary-color);
   border-color: var(--white);
   color: var(--white);
 }
-.home-btnLogin:hover i{
-  color: var(--white);
+.home-btnLogin:hover svg path{
+  fill: var(--white);
 }
 .principal-container-banner,
 .principal-container-banner-image{
@@ -290,15 +293,15 @@ main.main-area-content{
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s;
 }
-.main-area .header-top-logout:hover,
-.main-area .header-top-logout:hover i{
+.main-area .header-top-logout:hover{
   color: var(--primary-color);
 }
-.main-area .header-top-logout i{
+.main-area .header-top-logout:hover svg path{
+  fill: var(--primary-color);
+}
+.main-area .header-top-logout svg{
   font-size: 20px;
-  transform: rotate(180deg);
   margin-right: 7px;
 }
 .main-area .header-title-content{

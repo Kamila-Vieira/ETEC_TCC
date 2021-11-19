@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/View/assets/styles/reset.css"/>
   <link rel="stylesheet" href="/View/assets/styles/styles.css"/>
-  <title>SGEA | Cadastro realizado com sucesso</title>
+  <title>SGEA | Cadastro não realizado com sucesso</title>
 </head>
 
 <body>
   <main class="menssage-container">
     <form action="/Controller/Navegacao.php" method="post" class="menssage-content">
-      <p>Cadastro salvo com sucesso!</p>
-      <button name="btnCadastroSalvo">OK</button>
+      <p>Cadastro não salvo! <br/> Tente novamente mais tarde</p>
+      <button name="btnCadastroNaoSalvo">OK</button>
     </form>
   </main>
   <footer class="footer">

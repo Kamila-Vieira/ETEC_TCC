@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/View/assets/styles/reset.css">
   <link rel="stylesheet" href="/View/assets/styles/styles.css">
-  
   <title>SGEA | Login</title>
 </head>
 

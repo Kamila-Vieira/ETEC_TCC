@@ -14,7 +14,7 @@
   if(isset($_POST["btnGoToCord"])){
     include_once '../View/loginCoordenador.php';
   }
-  if(isset($_POST["btnLoginCoordenador"])){
+  if(isset($_POST["btnLoginCoordenador"]) || isset($_POST["btnProfFormBack"]) || isset($_POST["btnAlunoFormBack"])){
     include_once '../View/areaCoordenador.php';
   }
   if(isset($_POST["btnLogin"])){
