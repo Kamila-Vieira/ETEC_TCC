@@ -9,8 +9,12 @@
   --secondary-color: #000;
   --white: #fff;
   --gray-light: #CCCCCC;
+  --main-bg: #E5E5E5;
+  --combo-bg: #F8F8FC;
+  --hover-bg: #EBEBF5;
   --input-bg: #FAFAFC;
   --input-border: #E6E6F0;
+  --red-error: #FF3333;
 
   --primary-font: 'Baloo 2', cursive;
   --secondary-font: 'Poppins', sans-serif;
@@ -390,5 +394,452 @@ main.main-area-content{
 }
 /* Fim área principal */
 
+/* Início Header Principal */
+.common-header{
+  padding-top: 20px;
+  background-color: var(--primary-color);
+}
+.common-header.form-header{
+  padding-bottom: 128px;
+}
+.common-header-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.common-header-container-back,
+.common-header-container-logout{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.common-header-container-back:hover svg{
+  fill:  var(--secondary-color);
+}
+.common-header-container-back:hover svg path{
+  stroke: var(--secondary-color);
+}
+.common-header-container-logout{
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--secondary-color);
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.common-header-container-logout:hover{
+  color: var(--white);
+}
+.common-header-container-logout:hover svg path{
+  fill:  var(--white);
+}
+.common-header-container-logout svg{
+  font-size: 20px;
+  margin-right: 7px;
+}
+.common-header-container-title{
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--white);
+}
+.common-header-title-container{
+  max-width: 736px;
+  margin: 40px auto 0 auto;
+}
+.common-header-title-main{
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 36px;
+  color: var(--white);
+  margin-bottom: 26px;
+}
+.common-header-title-secondary{
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--secondary-color);
+}
+/* Fim Header Principal */
+
 /* Início formulário */
-/* Início formulário */
+.common-body{
+  background-color: var(--main-bg);
+}
+.common-main{
+  background: var(--white);
+  border: 1px solid var(--input-border);
+  box-sizing: border-box;
+  border-radius: 8px;
+  max-width: 736px;
+  margin: 0 auto;
+  margin-bottom: 90px;
+  margin-top: -64px;
+  padding-top: 64px;
+  overflow: hidden;
+}
+.form-piece:not(.form-main-submit){
+  padding: 0 62px;
+}
+.form-piece + .form-piece{
+  margin-top: 33px;
+}
+
+.form-title{
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 34px;
+  color: var(--secondary-color);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--input-border);
+}
+.form-line:not(:first-child){
+  margin-bottom: 24px;
+}
+.form-line{
+  display: flex;
+  column-gap: 28px;
+  position: relative;
+}
+.form-line.password{
+
+}
+.form-line-item{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--secondary-color);
+}
+
+.form-line-item input{
+  height: 56px;
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0 19px;
+  outline: none;
+  margin-top: 8px;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--secondary-color);
+}
+.form-line-item.empty-error::after{
+  content: '*Campo obrigatório';
+}
+.form-line-item.cpf-error::after{
+  content: '*CPF inválido';
+}
+.form-line-item.email-error::after{
+  content: '*E-mail inválido';
+}
+.form-line-item.empty-error::after,
+.form-line-item.cpf-error::after,
+.form-line-item.email-error::after{
+  position: absolute;
+  bottom: -16px;
+  color: var(--red-error);
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  padding-left: 5px;
+  white-space: nowrap;
+}
+.form-line-item.empty-error input,
+.form-line-item.cpf-error input,
+.form-line-item.email-error input{
+  border-color: var(--red-error);
+}
+.repeat-password-message{
+  position: absolute;
+  bottom: -30px;
+}
+.repeat-password-message.repeat-password-error::after{
+  content: '*As senhas precisam ser iguais';
+  color: var(--red-error);
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  padding-left: 5px;
+}
+.repeat-password-message.repeat-password-error ~ label > input{
+  border-color: var(--red-error);
+}
+.form-line-item.uf input{
+  text-align: center;
+}
+.form-line-item input::placeholder{
+  color: #00000020;
+}
+.form-line-item.name{
+  max-width: 400px;
+}
+.form-line-item.open input{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.form-line-item.data-nascimento{
+  max-width: calc(100% - 428px);
+}
+.form-line-combo{
+  width: 100%;
+  position: relative;
+}
+.form-line-combo .form-line-item input{
+  cursor: pointer;
+}
+.form-line-combo.uf{
+  max-width: 96px;
+}
+.form-line-item-list-arrow{
+  position: absolute;
+  bottom: 16px;
+  right: 4px;
+  height: 24px;
+  transition: transform 0.4s;
+}
+.form-line-item.open .form-line-item-list-arrow{
+  transform: rotate(180deg);
+}
+.form-line-item-list{
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  transition: max-height 0.4s;
+  width: 100%;
+  border-radius: 0px 0px 8px 8px;
+  background: var(--combo-bg);
+  scrollbar-width: 5px;
+  scrollbar-color: var(--primary-color) transparent;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+  z-index: 10;
+}
+.form-line-item-list::-webkit-scrollbar {
+  width: 5px;
+}
+.form-line-item-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.form-line-item-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+} 
+.form-line-item-list.open{
+  max-height: 284.55px;
+  overflow-y: auto;
+}
+.form-line-item-list li{
+  height: 56.91px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  color: var(--secondary-color);
+  padding: 0 11px;
+  position: relative;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.form-line-combo.modulo .form-line-item-list li{
+  justify-content: flex-start;
+}
+.form-line-item-list li:not(:last-child){
+  border-bottom: 1px solid var(--input-border);
+}
+.form-line-item-list li:hover{
+  background-color: var(--hover-bg);
+  font-weight: 600;
+}
+.form-line-item-list li::before{
+  transition: all 0.4s;
+}
+.form-line-item-list li:hover::before{
+  content: '';
+  height: 100%;
+  width: 0.71px;
+  display: block;
+  position: absolute;
+  left: 0;
+  background-color: var(--primary-color);
+}
+.form-main-submit{
+  padding: 36px 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--input-bg);
+  border-top: 1px solid var(--input-border);
+  position: relative;
+}
+.form-main-submit-message{
+  display: flex;
+  align-items: center;
+}
+.form-main-submit-message-text{
+  padding-left: 15px;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--secondary-color);
+}
+.form-main-submit-button{
+  width: 210px;
+  height: 56px;
+  background:  var(--secondary-color);
+  border-radius: 8px;
+
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--white);
+
+  border: none;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+.form-main-submit-button:hover{
+  background: var(--primary-color);
+}
+.form-main-submit-button:hover ~ .message-errors-container{
+  opacity: 1;
+  visibility: visible;
+}
+.message-errors-container{
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  right: 62px;
+  bottom: calc(100% - 34px);
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--white);
+  transition: opacity 0.4s;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.3));
+}
+.message-errors-container p{
+  color: var(--red-error);
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 20px;
+}
+.message-errors-container p:last-child:after{
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  width: 0; 
+  height: 0; 
+
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--white);
+
+  position: absolute;
+  bottom: -10px;
+  right: 50px;
+}
+@media (max-width: 1100px){
+  .common-header-container,
+  .common-header-title-container{
+    padding: 0 10px;
+  }
+  
+}
+@media (max-width: 736px){
+  .common-header-title-main{
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .common-header-title-secondary{
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .common-header.form-header{
+    padding-bottom: 40px;
+  }
+  .common-main{
+    margin-top: -10px;
+    padding-top: 20px;
+  }
+  .form-piece:not(.form-main-submit){
+    padding: 0 10px;
+  }
+  .form-line{
+    flex-direction: column;
+  }
+  .form-line:not(:first-child){
+    margin-bottom: 0;
+  }
+  .form-line-item{
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .form-line-item.name,
+  .form-line-item.data-nascimento,
+  .form-line-combo.uf{
+    max-width: initial;
+  }
+  .form-line-item-list{
+    top: calc(100% - 24px);
+  }
+  .form-main-submit{
+    padding: 20px 10px;
+  }
+  .form-main-submit-message svg{
+    width: 20px;
+    height: 22px;
+  }
+  .form-main-submit-message-text{
+    font-size: 11px;
+    line-height: 14px;
+    padding-left: 7px;
+  }
+  .form-main-submit-button{
+    width: 150px;
+    height: 42px;
+    font-size: 14px;
+    line-height: 15px;
+  }
+}
+/* Fim formulário */

@@ -36,5 +36,11 @@
   if(isset($_POST["btnAlunosLista"])){
     include_once '../View/listagemAlunos.php';
   }
+  if(isset($_POST["btnAddNovoProf"])){
+    include_once '../View/cadastroRealizado.php';
+  }
+  if(isset($_POST["btnAddNovoAluno"])){
+    include_once '../View/cadastroRealizado.php';
+  }
 
 ?>

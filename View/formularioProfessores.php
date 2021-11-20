@@ -10,37 +10,39 @@
   <title>SGEA | Cadastro de professor</title>
 </head>
 
-<body class="formulario-professores">
-  <header class="header">
-    <form action="/Controller/Navegacao.php" method="post"class="header-container">
-      <button name="btnProfFormBack" class="header-container-back">
+<body class="formulario-professores common-body">
+  <header class="common-header form-header">
+    <form action="/Controller/Navegacao.php" method="post"class="common-header-container">
+      <button name="btnProfFormBack" class="common-header-container-back">
         <svg width="49" height="11" viewBox="0 0 49 11" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 5.65772L48 5.65771" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M6.00098 10.2392L0.999977 5.65777L6.00098 1.07629" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <p class="header-container-title">SGEA</p>
-      <button name="btnLogout" class="header-container-logout">
+      <p class="common-header-container-title">SGEA</p>
+      <button name="btnLogout" class="common-header-container-logout">
         <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4.875 20.2475H9.14062C9.47578 20.2475 9.75 19.9721 9.75 19.6354V17.5948C9.75 17.2581 9.47578 16.9826 9.14062 16.9826H4.875C3.97617 16.9826 3.25 16.2531 3.25 15.3501V5.55526C3.25 4.6523 3.97617 3.92279 4.875 3.92279H9.14062C9.47578 3.92279 9.75 3.64731 9.75 3.31061V1.27002C9.75 0.933317 9.47578 0.657837 9.14062 0.657837H4.875C2.18359 0.657837 0 2.85148 0 5.55526V15.3501C0 18.0539 2.18359 20.2475 4.875 20.2475ZM7.26172 9.99356L15.793 1.42306C16.5547 0.657837 17.875 1.19349 17.875 2.29031V7.18774H24.7812C25.4566 7.18774 26 7.7336 26 8.4121V13.3095C26 13.988 25.4566 14.5339 24.7812 14.5339H17.875V19.4313C17.875 20.5281 16.5547 21.0638 15.793 20.2986L7.26172 11.7281C6.78945 11.2485 6.78945 10.4731 7.26172 9.99356Z" fill="black"/>
         </svg>
         Logout
       </button>
     </form>
+    <section class="common-header-title">
+      <div class="common-header-title-container">
+        <h1 class="common-header-title-main">Formulário de <br/> cadastro</h1>
+        <h2 class="common-header-title-secondary">Faça aqui um novo cadastro <br/> de professor</h2>
+      </div>
+    </section>
   </header>
 
-  <main class="form-main prof-form">
-    <section class="form-main-title">
-      <h1>Formulário de <br/> cadastro</h1>
-      <h2>Faça aqui um novo cadastro <br/> de professor</h2>
-    </section>
+  <main class="form-main prof-form common-main">
     <section class="form-main-container">
       <form action="/Controller/Navegacao.php" method="post" class="form-main-content">
-        <div class="form-main-personal-data">
+        <div class="form-main-personal-data form-piece">
           <h3 class="form-title">Dados pessoais</h3>
           <div class="form-line">
             <label class="form-line-item name">Nome completo<input type="text" name="nome"/></label>
-            <label class="form-line-item data-nascimento">Data de Nascimento<input type="date" name="datadenascimento"/></label>
+            <label class="form-line-item data-nascimento">Data de Nascimento<input type="date" placeholder="DD/MM/AAAA" name="datadenascimento"/></label>
           </div>
           <div class="form-line">
             <label class="form-line-item rua">Rua<input type="text" name="rua"/></label>
@@ -49,10 +51,16 @@
           <div class="form-line">
             <label class="form-line-item complemento">Complemento<input type="text" name="complemento"/></label>
             <label class="form-line-item cidade">Cidade<input type="text" name="cidade"/></label>
-            <div class="form-line-combo">
-              <label class="form-line-item uf">UF<input type="text" readonly="readonly" value="" name="uf"/></label>
+            <div class="form-line-combo uf">
+              <label class="form-line-item uf">UF
+                <input type="text" readonly="readonly" value="" placeholder="UF" name="uf"/>
+                <span class="form-line-item-list-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
               <ul class="form-line-item-list">
-                <li data-value="">UF</li>
                 <li data-value="AC">AC</li>
                 <li data-value="AL">AL</li>
                 <li data-value="AP">AP</li>
@@ -84,29 +92,36 @@
             </div>
           </div>
           <div class="form-line">
-            <label class="form-line-item cep">CEP<input type="text" name="cep"/></label>
-            <label class="form-line-item celular">Telefone celular<input type="text" name="celular"/></label>
+            <label class="form-line-item cep">CEP<input type="text" placeholder="00000-000" name="cep"/></label>
+            <label class="form-line-item celular">Telefone celular<input type="text" name="celular" placeholder="(99) 99999-9999" /></label>
           </div>
           <div class="form-line">
             <label class="form-line-item rg">RG<input type="text" name="rg"/></label>
-            <label class="form-line-item cpf">CPF<input type="text" name="cpf"/></label>
+            <label class="form-line-item cpf">CPF<input type="text" name="cpf" placeholder="000.000.000-00"/></label>
           </div>
         </div>
-        <div class="form-main-school-data">
+        <div class="form-main-school-data form-piece">
           <h3 class="form-title">Dados acadêmicos</h3>
           <div class="form-line">
             <label class="form-line-item exposicoeschefiadas">Exposições chefiadas<input type="text" name="exposicoeschefiadas"/></label>
-            <label class="form-line-item matricula">Matrícula<input type="text" name="matricula"/></label>
+            <label class="form-line-item matricula">Matrícula<input type="number" name="matricula"/></label>
           </div>
           <div class="form-line">
-            <label class="form-line-item data-admissao">Data de admissão<input type="date" name="datadeadmissao"/></label>
-            <label class="form-line-item data-rescisao">Data de rescisão<input type="date" name="dataderescisao"/></label>
+            <label class="form-line-item data-admissao">Data de admissão<input type="date" placeholder="DD/MM/AAAA" name="datadeadmissao"/></label>
+            <label class="form-line-item data-rescisao">Data de rescisão<input type="date" placeholder="DD/MM/AAAA" name="dataderescisao"/></label>
           </div>
           <div class="form-line">
-            <div class="form-line-combo">
-              <label class="form-line-item modulo">Módulo<input type="text" readonly="readonly" value="" name="modulo"/></label>
+            <div class="form-line-combo modulo">
+              <label class="form-line-item modulo">
+                Módulo
+                <input type="text" readonly="readonly" value="" placeholder="Selecione o módulo" name="modulo"/>
+                <span class="form-line-item-list-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
                 <ul class="form-line-item-list">
-                  <li data-value="">Selecione o módulo</li>
                   <li data-value="Desenho Artístico">Desenho Artístico</li>
                   <li data-value="Mangá">Mangá</li>
                   <li data-value="Ilustração">Ilustração</li>
@@ -117,12 +132,13 @@
               </div>
             <label class="form-line-item login">Login<input type="text" name="login"/></label>
           </div>
-          <div class="form-line">
+          <div class="form-line password">
+            <span class="repeat-password-message"></span>
             <label class="form-line-item senha">Senha<input type="text" name="senha"/></label>
             <label class="form-line-item repetir-senha">Repetir senha<input type="text"/></label>
           </div>
         </div>
-        <div class="form-main-submit">
+        <div class="form-main-submit form-piece">
           <div class="form-main-submit-message">
             <svg width="26" height="28" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13 14V8" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -135,16 +151,19 @@
             </p>
           </div>
           <button class="form-main-submit-button" name="btnAddNovoProf">Salvar cadastro</button>
+          <div class="message-errors-container"></div>
         </div>
       </form>
     </section>
   </main>
+
   <footer class="footer">
     <section class="footer-container">
       <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
     </section>
   </footer>
-  
+  <script src="/View/assets/scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="/View/assets/scripts/jquery.maskedinput.min.js" type="text/javascript"></script>  
   <script src="/View/assets/scripts/main.js"></script>
 </body>
 

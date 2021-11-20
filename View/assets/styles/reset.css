@@ -5,6 +5,23 @@
 body, html{
   overflow-x: hidden;
 }
+input[type="date"]{
+  text-transform: uppercase;
+}
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+input[type=number] {
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}
 
 html,
 body,
