@@ -14,7 +14,7 @@
   <main class="menssage-container">
     <form action="/Controller/Navegacao.php" method="post" class="menssage-content">
       <p>Cadastro não salvo! <br/> Tente novamente mais tarde</p>
-      <button name="btnCadastroNaoSalvo">OK</button>
+      <button name="btnVoltarAreaCoordenador">OK</button>
     </form>
   </main>
   <footer class="footer">

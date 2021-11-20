@@ -843,3 +843,13 @@ main.main-area-content{
   }
 }
 /* Fim formulário */
+
+/* Início Listagem */
+.common-header.list-header{
+  padding-bottom: 84px;
+}
+.list-main{
+  background-color: transparent;
+  border: none;
+}
+/* Fim Listagem */
