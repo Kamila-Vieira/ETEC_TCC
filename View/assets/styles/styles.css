@@ -24,8 +24,12 @@ body{
   height: 100vh;
 }
 
-main.principal-main{
+main.principal-main,
+main.menssage-container{
   height: calc(100% - 43px);
+}
+main.list-main{
+  min-height: calc(100% - 43px);
 }
 main.main-area-content{
   height: calc(100% - 209px);
@@ -36,6 +40,10 @@ main.main-area-content{
   }
   main.main-area-content{
     height: calc(100vh - 209px);
+  }
+  main.menssage-container{
+    height: calc(100vh - 43px);
+    padding: 0 15px;
   }
 }
 
@@ -518,9 +526,6 @@ main.main-area-content{
   column-gap: 28px;
   position: relative;
 }
-.form-line.password{
-
-}
 .form-line-item{
   display: flex;
   flex-direction: column;
@@ -844,12 +849,266 @@ main.main-area-content{
 }
 /* Fim formulário */
 
+/* Início mensagens */
+main.menssage-container{
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main.menssage-container .menssage-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 630px;
+}
+main.menssage-container .menssage-content p {
+  font-family: var(--primary-font);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 60px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 30px;
+}
+main.menssage-container .menssage-content button{
+  width: 104px;
+  height: 56px;
+  background: var(--white);
+  border: 2px solid var(--secondary-color);
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--secondary-color);
+  transition: all 0.4s;
+}
+main.menssage-container .menssage-content button:hover{
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+/* Fim mensagens */
+
 /* Início Listagem */
+.listagem-professores{
+  
+}
+.listagem-professores{
+
+}
 .common-header.list-header{
   padding-bottom: 84px;
 }
 .list-main{
   background-color: transparent;
   border: none;
+}
+.list-form-filters{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: -62px 0 40px 0;
+  column-gap: 16px;
+  
+}
+.list-form-col-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--secondary-color);
+}
+.list-form-col-item input{
+  height: 56px;
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0 19px;
+  outline: none;
+  margin-top: 8px;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+.list-form-col-item input::placeholder{
+  color: var(--gray-light);
+}
+.list-form-col.modulo{
+  position: relative;
+}
+.list-form-col-item-list-arrow{
+  position: absolute;
+}
+.list-form-col-item-list-arrow{
+  position: absolute;
+  bottom: 16px;
+  right: 4px;
+  height: 24px;
+  transition: transform 0.4s;
+}
+.list-form-col-item.open .list-form-col-item-list-arrow{
+  transform: rotate(180deg);
+}
+.list-form-col-item-list{
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  transition: max-height 0.4s;
+  width: 100%;
+  border-radius: 0px 0px 8px 8px;
+  background: var(--combo-bg);
+  scrollbar-width: 5px;
+  scrollbar-color: var(--primary-color) transparent;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+  z-index: 10;
+}
+.list-form-col-item-list::-webkit-scrollbar {
+  width: 5px;
+}
+.list-form-col-item-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.list-form-col-item-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+} 
+.list-form-col-item-list.open{
+  max-height: 284.55px;
+  overflow-y: auto;
+}
+.list-form-col-item-list li{
+  height: 56.91px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  color: var(--secondary-color);
+  padding: 0 11px;
+  position: relative;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.form-line-combo.modulo .list-form-col-item-list li{
+  justify-content: flex-start;
+}
+.list-form-col-item-list li:not(:last-child){
+  border-bottom: 1px solid var(--input-border);
+}
+.list-form-col-item-list li:hover{
+  background-color: var(--hover-bg);
+  font-weight: 600;
+}
+.list-form-col-item-list li::before{
+  transition: all 0.4s;
+}
+.list-form-col-item-list li:hover::before{
+  content: '';
+  height: 100%;
+  width: 0.71px;
+  display: block;
+  position: absolute;
+  left: 0;
+  background-color: var(--primary-color);
+}
+.list-form-button{
+  width: 73px;
+  height: 37px; 
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 26px;
+  color: var(--white);
+
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.list-form-button:hover{
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.list-main-content-item{
+  height: 128px;
+  background: var(--white);
+  border: 1px solid var(--input-border);
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 33px;
+  padding: 0 32px;
+  cursor: pointer;
+}
+.list-main-content-image{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24px;
+}
+.list-main-content-image-content{
+  width: 80px;
+  height: 80px;
+}
+.list-main-content-name{
+  max-width: calc(100% - 136px);
+}
+.list-main-content-name-text{
+  font-family: var(--secondary-font);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 25px;
+  color: var(--secondary-color);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+@media (max-width: 1024px){
+  .common-header.list-header{
+    padding-bottom: 30px;
+  }
+  .list-main{
+    margin: 0;
+    padding: 0 10px;
+  }
+  .list-form-filters{
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: initial;
+  }
+
+  .list-form-button{
+    margin-top: 20px;
+    width: 100%;
+  }
 }
 /* Fim Listagem */

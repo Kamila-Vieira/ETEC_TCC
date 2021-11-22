@@ -22,7 +22,12 @@
   }
   
   if(isset($_POST["btnLogout"])){
-    include_once '../View/login.php';
+    if(!isset($_SESSION))
+    {
+      session_destroy(); 
+      include_once '../View/login.php';
+    }
+
   }
   if(isset($_POST["btnProfForm"])){
     include_once '../View/formularioProfessores.php';
@@ -40,7 +45,7 @@
     include_once '../View/cadastroRealizado.php';
   }
   if(isset($_POST["btnAddNovoAluno"])){
-    include_once '../View/cadastroRealizado.php';
+    include_once '../View/cadastroNaoRealizado.php';
   }
 
 ?>

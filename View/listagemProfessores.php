@@ -10,7 +10,7 @@
   <title>SGEA | Lista de professores</title>
 </head>
 
-<body class="listagem-professores">
+<body class="listagem-professores common-body">
   <header class="common-header list-header">
     <form action="/Controller/Navegacao.php" method="post"class="common-header-container">
       <button name="btnVoltarAreaCoordenador" class="common-header-container-back">
@@ -39,7 +39,7 @@
     <section class="list-main-filters">
       <form action="/Controller/Navegacao.php" method="post" class="list-form-filters">
         <div class="list-form-col">
-            <label class="list-form-col-item nome">Nome<input type="number" name="nome"/></label>
+            <label class="list-form-col-item nome">Nome<input type="text" name="nome"/></label>
         </div>
         <div class="list-form-col modulo">
           <label class="list-form-col-item modulo">
@@ -63,7 +63,7 @@
         <div class="list-form-col">
             <label class="list-form-col-item matricula">Matrícula<input type="number" name="matricula"/></label>
         </div>
-        <button class="list-form-button" name="btnFiltrarProfessores">OK</button>
+        <button class="list-form-button" name="btnFiltrarProfessores">Filtrar</button>
       </form>
     </section>
 
@@ -100,6 +100,10 @@
     <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
   </section>
 </footer>
+
+  <script src="/View/assets/scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="/View/assets/scripts/jquery.maskedinput.min.js" type="text/javascript"></script>  
+  <script src="/View/assets/scripts/main.js"></script>
 </body>
 
 </html>

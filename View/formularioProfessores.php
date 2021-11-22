@@ -12,7 +12,7 @@
 
 <body class="formulario-professores common-body">
   <header class="common-header form-header">
-    <form action="/Controller/Navegacao.php" method="post"class="common-header-container">
+    <form action="/Controller/Navegacao.php" method="post" class="common-header-container">
       <button name="btnVoltarAreaCoordenador" class="common-header-container-back">
         <svg width="49" height="11" viewBox="0 0 49 11" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 5.65772L48 5.65771" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -104,12 +104,12 @@ function handlerSelectComboOption(label, input, list){
 }
 
 (function handlerOpenSelect() {
-  const selectCombos = document.querySelectorAll('.form-line-combo')
+  const selectCombos = document.querySelectorAll('.form-line-combo,.list-form-col.modulo')
   selectCombos.forEach(function(combo){
-    const labelCombo = combo.querySelector('.form-line-item')
-    const inputCombo = combo.querySelector('.form-line-item > input')
-    const listCombo = combo.querySelector('.form-line-item-list')
-    labelCombo.addEventListener('click', function() {
+    const labelCombo = combo.querySelector('.form-line-item,.list-form-col-item.modulo')
+    const inputCombo = combo.querySelector('.form-line-item > input,.list-form-col-item.modulo > input')
+    const listCombo = combo.querySelector('.form-line-item-list,.list-form-col-item-list')
+    labelCombo.addEventListener('click', function(e) {
       labelCombo.classList.toggle('open')
       listCombo.classList.toggle('open')
     })
@@ -117,41 +117,45 @@ function handlerSelectComboOption(label, input, list){
   })
 })();
 
-(function handlerSubmitForm(){
-  const $form = document.querySelector('form.form-main-content')
-  $form.addEventListener('submit', function (e) { 
-    e.preventDefault()
-    const formFields = e.currentTarget.querySelectorAll('.form-line-item')
-    formFields.forEach(function(field){
-      const inputField = field.querySelector('input')
-      if (inputField.name) {
-        if(inputField.name === 'cpf'){
-          formValidators.validCPF(inputField, field)
-        }
-        if(inputField.email === 'email'){
-          formValidators.validCPF(inputField, field)
-        }
-        formValidators.emptyField(inputField, field)
-      }
 
-      if (inputField.name === "senha") {
-        const repeatPasswordInput = document.querySelector('.form-line-item.repetir-senha input')
-        const repeatPasswordMessage = document.querySelector('.repeat-password-message')
-        formValidators.repeatPassword(inputField, repeatPasswordInput, repeatPasswordMessage)
-      }
-    })
-    const errorsContent = formValidators.hasAnyError(e.currentTarget)
+// (function handlerSubmitForm(){
+//   const $form = document.querySelector('form.form-main-content')
+//   const data = {}
+//   $form.addEventListener('submit', function handlerSubmit(e) { 
+//     e.preventDefault()
+//     $($form).trigger('submit')
+//     const formFields = e.currentTarget.querySelectorAll('.form-line-item')
+//     formFields.forEach(function(field){
+//       const inputField = field.querySelector('input')
+//       if (inputField.name) {
+//         if(inputField.name === 'cpf'){
+//           formValidators.validCPF(inputField, field)
+//         }
+//         if(inputField.name === 'email'){
+//           formValidators.validCPF(inputField, field)
+//         }
+//         //formValidators.emptyField(inputField, field)
+//         data[inputField.name] = inputField.value
+//       }
 
-    if(errorsContent.anyError){
-      const errorMessagesContainer = document.querySelector('.message-errors-container')
-      const { cpf, email, campoVazio, senha} = errorsContent.errors
-      errorMessagesContainer.innerHTML = ''
-      if (cpf) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="cpf">- Preencha o campo CPF com um CPF válido</p>')
-      if (email) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="email">- Preencha o campo E-mail um e-mail válido</p>')
-      if (campoVazio) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="campoVazio">- Ainda há campos vázios</p>')
-      if (senha) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="senha">- As senhas precisam ser idênticas</p>')
-    }else{
-      e.currentTarget.submit()
-    }
-  }) 
-})()
+//       if (inputField.name === "senha") {
+//         const repeatPasswordInput = document.querySelector('.form-line-item.repetir-senha input')
+//         const repeatPasswordMessage = document.querySelector('.repeat-password-message')
+//         formValidators.repeatPassword(inputField, repeatPasswordInput, repeatPasswordMessage)
+//       }
+//     })
+//     const errorsContent = formValidators.hasAnyError(e.currentTarget)
+
+//     if(errorsContent.anyError){
+//       const errorMessagesContainer = document.querySelector('.message-errors-container')
+//       const { cpf, email, campoVazio, senha} = errorsContent.errors
+//       errorMessagesContainer.innerHTML = ''
+//       if (cpf) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="cpf">- Preencha o campo CPF com um CPF válido</p>')
+//       if (email) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="email">- Preencha o campo E-mail um e-mail válido</p>')
+//       if (campoVazio) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="campoVazio">- Ainda há campos vázios</p>')
+//       if (senha) errorMessagesContainer.insertAdjacentHTML('beforeend', '<p class="senha">- As senhas precisam ser idênticas</p>')
+//     }else{
+//       $($form).trigger('submit')
+//     }
+//   }) 
+// })()
