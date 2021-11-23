@@ -1,3 +1,9 @@
+<?php
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -70,31 +76,33 @@
     </section>
 
     <section class="list-main-content">
-     <form action="/Controller/Navegacao.php" method="post" class="list-main-content-form">
-        <div class="list-main-content-item">
+      <form action="/Controller/Navegacao.php" method="post" class="list-main-content-form"></from>
+        <button class="list-main-content-item">
           <div class="list-main-content-image">
             <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content">
           </div>
           <div class="list-main-content-name">
             <p class="list-main-content-name-text">Fulano da silva</p>
           </div>
-        </div>
-        <div class="list-main-content-item">
+        </button>
+
+        <button class="list-main-content-item">
           <div class="list-main-content-image">
             <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content">
           </div>
           <div class="list-main-content-name">
             <p class="list-main-content-name-text">Fulano da silva</p>
           </div>
-        </div>
-        <div class="list-main-content-item">
+        </button>
+
+        <button class="list-main-content-item">
           <div class="list-main-content-image">
             <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content">
           </div>
           <div class="list-main-content-name">
             <p class="list-main-content-name-text">Fulano da silva</p>
           </div>
-        </div>
+        </button>
       </form>
     </section>
   </main>
@@ -105,8 +113,6 @@
     </section>
   </footer>
 
-  <script src="/View/assets/scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
-  <script src="/View/assets/scripts/jquery.maskedinput.min.js" type="text/javascript"></script>  
   <script src="/View/assets/scripts/main.js"></script>
 </body>
 

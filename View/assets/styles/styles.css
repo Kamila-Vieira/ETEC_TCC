@@ -1065,6 +1065,7 @@ main.menssage-container .menssage-content button:hover{
   margin-bottom: 33px;
   padding: 0 32px;
   cursor: pointer;
+  width: 100%;
 }
 .list-main-content-image{
   width: 80px;

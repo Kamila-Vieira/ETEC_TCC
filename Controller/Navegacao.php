@@ -22,10 +22,10 @@
   }
   
   if(isset($_POST["btnLogout"])){
-    if(!isset($_SESSION))
+    if(isset($_SESSION))
     {
       session_destroy(); 
-      include_once '../View/login.php';
+      include_once '../View/home.php';
     }
 
   }

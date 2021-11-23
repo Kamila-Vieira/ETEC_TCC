@@ -15,7 +15,7 @@
     <section class="principal-container container">
       <article class="principal-container-left">
         <h1 class="principal-container-title">SGEA</h1>
-        <h2 class="principal-container-subtitle">Sistema degerenciamento de escola de arte</h2>
+        <h2 class="principal-container-subtitle">Sistema de gerenciamento de escola de arte</h2>
         <form action="/Controller/Navegacao.php" method="post" class="home-form">
           <button name="btnGoToLogin" class="home-btnLogin">
             <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
