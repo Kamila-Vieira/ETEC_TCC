@@ -47,58 +47,10 @@
           <h3 class="form-title">Dados pessoais</h3>
           <div class="form-line">
             <label class="form-line-item name">Nome completo<input type="text" name="nome"/></label>
+          </div>
+          <div class="form-line">
+          <label class="form-line-item celular">Telefone celular<input type="text" name="celular" placeholder="(99) 99999-9999" /></label>
             <label class="form-line-item data-nascimento">Data de Nascimento<input type="date" placeholder="DD/MM/AAAA" name="datadenascimento"/></label>
-          </div>
-          <div class="form-line">
-            <label class="form-line-item rua">Rua<input type="text" name="rua"/></label>
-            <label class="form-line-item bairro">Bairro<input type="text" name="bairro"/></label>
-          </div>
-          <div class="form-line">
-            <label class="form-line-item complemento">Complemento<input type="text" name="complemento"/></label>
-            <label class="form-line-item cidade">Cidade<input type="text" name="cidade"/></label>
-            <div class="form-line-combo uf">
-              <label class="form-line-item uf">UF
-                <input type="text" readonly="readonly" value="" placeholder="UF" name="uf"/>
-                <span class="form-line-item-list-arrow">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </label>
-              <ul class="form-line-item-list">
-                <li data-value="AC">AC</li>
-                <li data-value="AL">AL</li>
-                <li data-value="AP">AP</li>
-                <li data-value="AM">AM</li>
-                <li data-value="BA">BA</li>
-                <li data-value="CE">CE</li>
-                <li data-value="DF">DF</li>
-                <li data-value="ES">ES</li>
-                <li data-value="GO">GO</li>
-                <li data-value="MA">MA</li>
-                <li data-value="MT">MT</li>
-                <li data-value="MS">MS</li>
-                <li data-value="MG">MG</li>
-                <li data-value="PA">PA</li>
-                <li data-value="PB">PB</li>
-                <li data-value="PR">PR</li>
-                <li data-value="PE">PE</li>
-                <li data-value="PI">PI</li>
-                <li data-value="RJ">RJ</li>
-                <li data-value="RN">RN</li>
-                <li data-value="RS">RS</li>
-                <li data-value="RO">RO</li>
-                <li data-value="RR">RR</li>
-                <li data-value="SC">SC</li>
-                <li data-value="SP">SP</li>
-                <li data-value="SE">SE</li>
-                <li data-value="TO">TO</li>
-              </ul>
-            </div>
-          </div>
-          <div class="form-line">
-            <label class="form-line-item cep">CEP<input type="text" placeholder="00000-000" name="cep"/></label>
-            <label class="form-line-item celular">Telefone celular<input type="text" name="celular" placeholder="(99) 99999-9999" /></label>
           </div>
           <div class="form-line">
             <label class="form-line-item rg">RG<input type="text" name="rg"/></label>
@@ -107,14 +59,6 @@
         </div>
         <div class="form-main-school-data form-piece">
           <h3 class="form-title">Dados acadêmicos</h3>
-          <div class="form-line">
-            <label class="form-line-item exposicoeschefiadas">Exposições chefiadas<input type="text" name="exposicoeschefiadas"/></label>
-            <label class="form-line-item matricula">Matrícula<input type="number" name="matricula"/></label>
-          </div>
-          <div class="form-line">
-            <label class="form-line-item data-admissao">Data de admissão<input type="date" placeholder="DD/MM/AAAA" name="datadeadmissao"/></label>
-            <label class="form-line-item data-rescisao">Data de rescisão<input type="date" placeholder="DD/MM/AAAA" name="dataderescisao"/></label>
-          </div>
           <div class="form-line">
             <div class="form-line-combo modulo">
               <label class="form-line-item modulo">
@@ -127,12 +71,15 @@
                 </span>
               </label>
                 <ul class="form-line-item-list">
-                  <li data-value="Desenho Artístico">Desenho Artístico</li>
-                  <li data-value="Mangá">Mangá</li>
-                  <li data-value="Ilustração">Ilustração</li>
-                  <li data-value="HQ">HQ</li>
-                  <li data-value="Modelagem digital">Modelagem digital</li>
-                  <li data-value="Pintura Digital">Pintura Digital</li>
+                  <?php 
+                    include_once '../Controller/ModuloController.php';
+                    $modulo = new ModuloController();
+                    $results = $modulo->listarModulos();
+                    if($results != null)
+                    while($row = $results->fetch_object()){
+                      printf('<li data-value="'.$row->modulo.'" >'.$row->modulo.'<input type="hidden" name="moduloid" value="'.$row->id.'"></li>');
+                    }
+                  ?>
                 </ul>
               </div>
             <label class="form-line-item login">Login<input type="text" name="login"/></label>

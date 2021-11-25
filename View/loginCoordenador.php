@@ -25,11 +25,11 @@
 
         <form action="/Controller/Navegacao.php" method="post" class="login-form">
           <div class="login-form-email">
-            <input type="email" name="email" placeholder="Ex.: teste@teste.com"/>
+            <input type="text" name="loginCR" placeholder="Ex.: teste@teste.com"/>
             <label>Login</label>
           </div>
           <div class="login-form-password">
-            <input type="password" name="password" />
+            <input type="password" name="senhaCR" />
             <label>Senha</label>
           </div>
           <div class="login-form-buttons">
@@ -38,7 +38,7 @@
             </button>
           </div>
         </form>
-
+      
       </article>
       <article class="principal-container-right">
         <figure class="principal-container-banner">

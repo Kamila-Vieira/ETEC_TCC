@@ -1,11 +1,11 @@
 <?php
-
-  include_once 'View/home.php';
-  
   if(!isset($_SESSION))
   {
     session_start(); 
   }
+
+  include_once 'View/home.php';
+  
 
   if(isset($_POST["btnGoToLogin"])){
     include_once '../View/login.php';
@@ -14,11 +14,40 @@
   if(isset($_POST["btnGoToCord"])){
     include_once '../View/loginCoordenador.php';
   }
-  if(isset($_POST["btnLoginCoordenador"]) || isset($_POST["btnVoltarAreaCoordenador"])){
+  if(isset($_POST["btnVoltarHome"])){
+    include_once '../View/home.php';
+  }
+  if(isset($_POST["btnVoltarAreaCoordenador"])){
     include_once '../View/areaCoordenador.php';
+  }
+  if(isset($_POST["btnLoginCoordenador"])){
+   include_once '../View/areaCoordenador.php';
+
+    // require_once '../Controller/CoordernadorController.php';
+    // $coordenadorController = new CoordenadorController();
+
+    // if($coordenadorController->login($_POST['loginCR'], $_POST['senhaCR']))
+    // {
+    //   include_once '../View/areaCoordenador.php';
+    // }
+    // else
+    // {
+    //   include_once '../View/acessoNaoAutorizado.php';
+    // }
   }
   if(isset($_POST["btnLogin"])){
     include_once '../View/areaProfessor.php';
+    // require_once '../Controller/ProfessorController.php';
+    // $professorController = new ProfessorController();
+
+    // if($professorController->login($_POST['loginPR'], $_POST['senhaPR']))
+    // {
+    //   include_once '../View/areaProfessor.php';
+    // }
+    // else
+    // {
+    //   include_once '../View/acessoNaoAutorizado.php';
+    // }
   }
   
   if(isset($_POST["btnLogout"])){
@@ -41,11 +70,82 @@
   if(isset($_POST["btnAlunosLista"])){
     include_once '../View/listagemAlunos.php';
   }
+
   if(isset($_POST["btnAddNovoProf"])){
-    include_once '../View/cadastroRealizado.php';
+    require_once '../Controller/ProfessorController.php';
+    $professorController = new ProfessorController();
+    $insert = $professorController->inserirProfessor($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['modulo'], $_POST['moduloId'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['datadenascimento']);
+
+    if($insert)
+    {
+      include_once '../View/cadastroRealizado.php';
+    }else{
+      include_once '../View/cadastroNaoRealizado.php';
+    }
   }
+
   if(isset($_POST["btnAddNovoAluno"])){
-    include_once '../View/cadastroNaoRealizado.php';
+    require_once '../Controller/AlunoController.php';
+
+    $alunoController = new AlunoController();
+    $insert = $alunoController->inserirAluno($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['moduloid'], $_POST['datadeinicio'], $_POST['datadetermino'],$_POST['datadenascimento']);
+    
+    if($insert)
+    {
+      include_once '../View/cadastroRealizado.php';
+    }else{
+      include_once '../View/cadastroNaoRealizado.php';
+    }
   }
+
+  if(isset($_POST["btnVisualizarAluno"])){
+    require_once '../Controller/AlunoController.php';
+
+    $alunoController = new AlunoController();
+    if($alunoController->visualizarAluno($_POST['id']))
+    {
+      include_once '../View/perfilAluno.php';
+    }
+    
+  }
+  if(isset($_POST["btnVisualizarProfessor"])){
+    require_once '../Controller/ProfessorController.php';
+
+    $professorController = new ProfessorController();
+    if($professorController->visualizarProfessor($_POST['id']))
+    {
+      include_once '../View/perfilProfessor.php';
+    }
+    
+  }
+
+  if(isset($_POST["btnAtualizarProf"])){
+    require_once '../Controller/ProfessorController.php';
+
+    $professorController = new ProfessorController();
+    $update = $professorController->atualizarProfessor($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['datadenascimento']);
+
+    if($update)
+    {
+      include_once '../View/cadastroRealizado.php';
+    }else{
+      include_once '../View/cadastroNaoRealizado.php';
+    }
+  }
+
+  if(isset($_POST["btnAtualizarAluno"])){
+    require_once '../Controller/AlunoController.php';
+
+    $alunoController = new AlunoController();
+    $update = $alunoController->atualizarAluno($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['moduloid'], $_POST['datadeinicio'], $_POST['datadetermino'],$_POST['datadenascimento']);
+    
+    if($update)
+    {
+      include_once '../View/cadastroRealizado.php';
+    }else{
+      include_once '../View/cadastroNaoRealizado.php';
+    }
+  }
+
 
 ?>

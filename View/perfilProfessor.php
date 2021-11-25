@@ -15,7 +15,7 @@
 <body class="perfil-professor">
   <header class="common-header profile-header">
     <form action="/Controller/Navegacao.php" method="post" class="common-header-container">
-      <button name="btnVoltarAreaCoordenador" class="common-header-container-back">
+      <button name="btnProfLista" class="common-header-container-back">
         <svg width="49" height="11" viewBox="0 0 49 11" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 5.65772L48 5.65771" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           <path d="M6.00098 10.2392L0.999977 5.65777L6.00098 1.07629" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -30,22 +30,201 @@
       </button>
     </form>
     <section class="common-header-title">
-      <div class="common-header-title-container">
+      <div class="common-header-title-container top-profile">
         <figure>
           <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="common-header-title-image">
         </figure>
-        <h1 class="common-header-title-main">Fulano da Silva</h1>
+        <h1 class="common-header-title-main">
+          <?php 
+            include_once '../Model/Professor.php';
+            include_once '../Controller/ProfessorController.php';
+            
+            if(!isset($_SESSION))
+            {
+              session_start();
+            }
+            $professor = new ProfessorController();
+            $result = $professor->visualizarProfessor($_POST['id']);
+            if($result){
+              echo ''.$result->nome.'';
+            }
+          ?>
+        </h1>
       </div>
     </section>
   </header>
 
-  <main class="profile-main prof-profile common-main"></main>
+  <main class="profile-main prof-profile common-main">
+  <section class="form-main-container form-profile prof-form-profile">
+      <form action="/Controller/Navegacao.php" method="post" class="form-main-content">
+          <?php 
+            include_once '../Model/Professor.php';
+            include_once '../Controller/ProfessorController.php';
+                    
+            if(!isset($_SESSION))
+            {
+              session_start();
+            }
+            $professor = new ProfessorController();
+            $result = $professor->visualizarProfessor($_POST['id']);
+            if($result){
+              echo '<input type="hidden" name="id" value="'.$result->id.'">';
+            }
+          ?>
+        <div class="form-main-personal-data form-piece">
+          <h3 class="form-title">Dados pessoais</h3>
+          <div class="form-line">
+            <label class="form-line-item name">Nome completo
+              <input type="text" name="nome" 
+              value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->nome.'';
+                  }
+                ?>"/>
+            </label>
+          </div>
+          <div class="form-line">
+            <label class="form-line-item celular">Telefone celular
+            <input type="text" name="celular" placeholder="(99) 99999-9999" 
+            value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->telefoneCelular.'';
+                  }
+              ?>"/>
+            </label>
+            <label class="form-line-item data-nascimento">Data de Nascimento
+            <input type="date" placeholder="DD/MM/AAAA" name="datadenascimento"
+            value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->dataNascimento.'';
+                  }
+              ?>"/>
+            </label>
+          </div>
+          <div class="form-line">
+            <label class="form-line-item rg">RG
+            <input type="text" name="rg"
+            value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->rg.'';
+                  }
+              ?>"/>
+            </label>
+            <label class="form-line-item cpf">CPF
+            <input type="text" name="cpf" placeholder="000.000.000-00"
+            value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->cpf.'';
+                  }
+              ?>"/>
+            </label>
+          </div>
+        </div>
+        <div class="form-main-school-data form-piece">
+          <h3 class="form-title">Dados acadêmicos</h3>
+          <div class="form-line modulo">
+            <span>Módulos</span>
+                <ul class="form-line-list">
+                  <?php 
+                    include_once '../Controller/ModuloController.php';
+                    $modulo = new ModuloController();
+                    $results = $modulo->listarModulosPorProfessor($_POST['id']);
+                    if($results != null)
+                    while($row = $results->fetch_object()){
+                      printf('<li class="form-line-list-item">'.$row->modulo.'</li>');
+                    }
+                  ?>
+              </ul>
+          </div>
+          <div class="form-line">
+            <label class="form-line-item login">Login
+              <input type="text" name="login"
+              value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->login.'';
+                  }
+              ?>"/>
+            </label>
+            <label class="form-line-item senha">Senha
+              <input type="text" name="senha"
+              value="<?php 
+                  include_once '../Controller/ProfessorController.php';
+                  
+                  if(!isset($_SESSION))
+                  {
+                    session_start();
+                  }
+                  $professor = new ProfessorController();
+                  $result = $professor->visualizarProfessor($_POST['id']);
+                  if($result){
+                    echo ''.$result->senha.'';
+                  }
+              ?>"/>
+            </label>
+          </div>
+        </div>
+        <div class="form-main-submit form-piece">
+          <button class="form-main-submit-button" name="btnAtualizarProf">Salvar cadastro</button>
+        </div>
+      </form>
+    </section>
+  
+  </main>
 
   <footer class="footer">
   <section class="footer-container">
     <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
   </section>
 </footer>
+<script src="/View/assets/scripts/main.js"></script>
 </body>
 
 </html>

@@ -86,11 +86,11 @@ const ValidEmail = {
   }
 }
 
-jQuery(function formMasks($){
+/* jQuery(function formMasks($){
   $(".form-line-item.celular input").mask("(99) 99999-9999");
   $(".form-line-item.cpf input").mask("999.999.999-99");
   $(".form-line-item.cep input").mask("99999-999");
-});
+}); */
 
 function handlerSelectComboOption(label, input, list){
   const listOptions = list.querySelectorAll('li')

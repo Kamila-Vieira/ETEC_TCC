@@ -465,6 +465,10 @@ main.main-area-content{
   max-width: 736px;
   margin: 40px auto 0 auto;
 }
+.common-header-title-container.top-profile{
+  display: flex;
+  align-items: center;
+}
 .common-header-title-main{
   font-family: var(--primary-font);
   font-style: normal;
@@ -897,18 +901,14 @@ main.menssage-container .menssage-content button:hover{
 /* Fim mensagens */
 
 /* Início Listagem */
-.listagem-professores{
-  
-}
-.listagem-professores{
-
-}
 .common-header.list-header{
   padding-bottom: 84px;
 }
 .list-main{
   background-color: transparent;
   border: none;
+  margin-top: 0;
+  padding-top: 20px;
 }
 .list-form-filters{
   display: flex;
@@ -1113,3 +1113,13 @@ main.menssage-container .menssage-content button:hover{
   }
 }
 /* Fim Listagem */
+
+/* Início perfil */
+.common-header.profile-header{
+  padding-bottom: 113px;
+}
+.common-header.profile-header .common-header-title-main{
+  margin-bottom: 0;
+  margin-left: 22px;
+}
+/* Fim perfil */

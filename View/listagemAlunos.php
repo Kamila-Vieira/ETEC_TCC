@@ -38,72 +38,32 @@
     <section class="common-header-title">
       <div class="common-header-title-container">
         <h1 class="common-header-title-main">Lista de Alunos</h1>
-        <h2 class="common-header-title-secondary">Filtrar por:</h2>
       </div>
     </section>
   </header>
 
   <main class="list-main aluno-list common-main">
-    <section class="list-main-filters">
-      <form action="/Controller/Navegacao.php" method="post" class="list-form-filters">
-        <div class="list-form-col">
-            <label class="list-form-col-item nome">Nome<input type="text" name="nome"/></label>
-        </div>
-        <div class="list-form-col modulo">
-          <label class="list-form-col-item modulo">
-            Módulo
-            <input type="text" readonly="readonly" value="" placeholder="Selecione o módulo" name="modulo" />
-            <span class="list-form-col-item-list-arrow">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </span>
-          </label>
-          <ul class="list-form-col-item-list">
-            <li data-value="Desenho Artístico">Desenho Artístico</li>
-            <li data-value="Mangá">Mangá</li>
-            <li data-value="Ilustração">Ilustração</li>
-            <li data-value="HQ">HQ</li>
-            <li data-value="Modelagem digital">Modelagem digital</li>
-            <li data-value="Pintura Digital">Pintura Digital</li>
-          </ul>
-        </div>
-        <div class="list-form-col">
-            <label class="list-form-col-item matricula">Matrícula<input type="number" name="matricula"/></label>
-        </div>
-        <button class="list-form-button" name="btnFiltrarProfessores">Filtrar</button>
-      </form>
-    </section>
-
     <section class="list-main-content">
-      <form action="/Controller/Navegacao.php" method="post" class="list-main-content-form"></from>
-        <button class="list-main-content-item">
-          <div class="list-main-content-image">
-            <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content">
-          </div>
-          <div class="list-main-content-name">
-            <p class="list-main-content-name-text">Fulano da silva</p>
-          </div>
-        </button>
+      
+        <?php
+          include_once '../Controller/AlunoController.php';
+          if(!isset($_SESSION))
+          {
+            session_start();
+          }
+          $aluno = new AlunoController();
+          $results = $aluno->listarAlunos();
+          if($results != null)
 
-        <button class="list-main-content-item">
-          <div class="list-main-content-image">
-            <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content">
-          </div>
-          <div class="list-main-content-name">
-            <p class="list-main-content-name-text">Fulano da silva</p>
-          </div>
-        </button>
-
-        <button class="list-main-content-item">
-          <div class="list-main-content-image">
-            <img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content">
-          </div>
-          <div class="list-main-content-name">
-            <p class="list-main-content-name-text">Fulano da silva</p>
-          </div>
-        </button>
-      </form>
+          while($row = $results->fetch_object()){
+            echo '<form action="/Controller/Navegacao.php" method="post" class="list-main-content-form">';
+            echo '<button class="list-main-content-item" name="btnVisualizarAluno">';
+            echo '<input type="hidden" name="id" value="'.$row->id.'">';
+            echo '<div class="list-main-content-image"><img src="/View/assets/img/avatar-default.png" alt="Avatar" class="list-main-content-image-content"></div>';
+            echo '<div class="list-main-content-name"><p class="list-main-content-name-text">'.$row->nome.'</p></div>';
+            echo '</button></form>';
+          }
+        ?>
     </section>
   </main>
 
