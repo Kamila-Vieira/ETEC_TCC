@@ -45,7 +45,7 @@
       $this->modulo->setId($id);
       $this->modulo->setModulo($modulo);
       $this->modulo->setProfessorId($professorId);
-      $result = $this->modulo->atualizar();
+      $result = $this->modulo->inserir();
       return $result;
     }
   }

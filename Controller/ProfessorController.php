@@ -10,20 +10,19 @@
       $this->professor = new Professor();
     }
 
-    // public function login($login, $senha)
-    // {
-      
-    //   $this->professor->carregarProfessor($login);
-    //   if($this->professor->getSenha() == $senha)
-    //   {
-    //     $_SESSION['Professor'] = serialize($this->professor);
-    //     return true;
-    //   }
-    //   else
-    //   {
-    //     return false;
-    //   }
-    // }
+    public function login($login, $senha)
+    {
+      $this->professor->carregar($login);
+      if($this->professor->getSenha() == $senha)
+      { 
+        $_SESSION['Professor'] = serialize($this->professor);
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
 
     public function listarProfessores()
     {
@@ -37,7 +36,7 @@
       return $result;
     }
 
-    public function atualizarProfessor($id, $nome, $telefoneCelular, $rg, $cpf, $login, $senha, $dataNascimento)
+    public function atualizarProfessor($id, $nome, $telefoneCelular, $rg, $cpf, $login, $senha, $dataNascimento, $moduloid, $modulo)
     {
       $this->professor->setId($id);
       $this->professor->setNome($nome);
@@ -48,6 +47,9 @@
       $this->professor->setSenha($senha);
       $this->professor->setDataNascimento($dataNascimento);
       $result = $this->professor->atualizar();
+      include_once '../Controller/ModuloController.php';
+      $moduloController = new ModuloController();
+      $moduloController->atualizarModulo($moduloid, $modulo, $id);
       return $result;
     }
 
@@ -63,8 +65,8 @@
       $this->professor->setDataNascimento($dataNascimento);
       $result = $this->professor->inserir();
       include_once '../Controller/ModuloController.php';
-      $modulo = new ModuloController();
-      $modulo->inserirModulo($moduloid, $modulo, $id);
+      $moduloController = new ModuloController();
+      $moduloController->inserirModulo($moduloid, $modulo, $id);
       return $result;
     }
 

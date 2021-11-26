@@ -24,11 +24,11 @@
 
         <form action="/Controller/Navegacao.php" method="post" class="login-form">
           <div class="login-form-email">
-            <input type="text" name="loginPR" placeholder="Ex.: teste@teste.com"/>
+            <input type="text" name="login" placeholder="Ex.: teste@teste.com"/>
             <label>Login</label>
           </div>
           <div class="login-form-password">
-            <input type="password" name="senhaPR" />
+            <input type="password" name="senha" />
             <label>Senha</label>
           </div>
           <div class="login-form-buttons">

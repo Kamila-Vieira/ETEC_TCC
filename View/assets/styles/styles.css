@@ -610,9 +610,6 @@ main.main-area-content{
 .form-line-item input::placeholder{
   color: #00000020;
 }
-.form-line-item.name{
-  max-width: 400px;
-}
 .form-line-item.open input{
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -1123,3 +1120,16 @@ main.menssage-container .menssage-content button:hover{
   margin-left: 22px;
 }
 /* Fim perfil */
+
+/* Ajustes */
+
+.form-line-item.modulo input:not(:first-child){
+  display: none;
+}
+
+main.profile-main .form-main-submit{
+  justify-content: center;
+}
+main.profile-main .form-main-submit-button{
+  width: 300px;
+}

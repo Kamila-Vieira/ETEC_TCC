@@ -42,7 +42,7 @@
 
   <main class="form-main prof-form common-main">
     <section class="form-main-container">
-      <form action="/Controller/Navegacao.php" method="post" class="form-main-content">
+      <form target="formulario" method="post" class="form-main-content">
         <div class="form-main-personal-data form-piece">
           <h3 class="form-title">Dados pessoais</h3>
           <div class="form-line">
@@ -64,6 +64,7 @@
               <label class="form-line-item modulo">
                 Módulo
                 <input type="text" readonly="readonly" value="" placeholder="Selecione o módulo" name="modulo"/>
+                <input type="hidden" id="moduloId" name="moduloId" value=""/>
                 <span class="form-line-item-list-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -77,7 +78,7 @@
                     $results = $modulo->listarModulos();
                     if($results != null)
                     while($row = $results->fetch_object()){
-                      printf('<li data-value="'.$row->modulo.'" >'.$row->modulo.'<input type="hidden" name="moduloid" value="'.$row->id.'"></li>');
+                      printf('<li data-id="'.$row->id.'" data-value="'.$row->modulo.'" >'.$row->modulo.'</li>');
                     }
                   ?>
                 </ul>
@@ -108,7 +109,7 @@
       </form>
     </section>
   </main>
-
+  <iframe style="display:none;" name="formulario" src="formulario.php"></iframe>
   <footer class="footer">
     <section class="footer-container">
       <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>

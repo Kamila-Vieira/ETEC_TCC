@@ -104,7 +104,7 @@ class Coordenador{
     return $this;
   }
 
-  public function carregarCoordenador($login){
+  public function carregar($login){
     require_once 'Database.php';
     $database = new Database();
 
@@ -112,19 +112,12 @@ class Coordenador{
     if ($connection->connect_error) {
       die("Connection failed: " . $connection->connect_error);
     }
-    $sql = 'SELECT `senha` FROM `coordenadores` WHERE `login` = '.$login ;
+    $sql = "SELECT `senha` FROM `coordenadores` WHERE `login` = '".$login."'";
     $response = $connection->query($sql);
     $data = $response->fetch_object();
     if($data!= null)
     {
-      $this->id = $data->id;
-      $this->nome = $data->nome;
-      $this->telefoneCelular = $data->telefoneCelular;
-      $this->rg = $data->rg;
-      $this->cpf = $data->cpf;
-      $this->login = $data->login;
       $this->senha = $data->senha;
-      $this->dataNascimento = $data->dataNascimento;
       $connection->close();
       return true;
     }

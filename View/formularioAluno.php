@@ -43,7 +43,7 @@
 
   <main class="form-main aluno-form common-main">
     <section class="form-main-container">
-      <form action="/Controller/Navegacao.php" method="post" class="form-main-content">
+      <form method="post" target="formulario" class="form-main-content">
         <div class="form-main-personal-data form-piece">
           <h3 class="form-title">Dados pessoais</h3>
           <div class="form-line">
@@ -67,6 +67,7 @@
               <label class="form-line-item modulo">
                 Módulo
                 <input type="text" readonly="readonly" value="" placeholder="Selecione o módulo" name="modulo"/>
+                <input type="hidden" id="moduloId" name="moduloId" value=""/>
                 <span class="form-line-item-list-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -74,12 +75,15 @@
                 </span>
               </label>
                 <ul class="form-line-item-list">
-                  <li data-value="Desenho Artístico">Desenho Artístico</li>
-                  <li data-value="Mangá">Mangá</li>
-                  <li data-value="Ilustração">Ilustração</li>
-                  <li data-value="HQ">HQ</li>
-                  <li data-value="Modelagem digital">Modelagem digital</li>
-                  <li data-value="Pintura Digital">Pintura Digital</li>
+                  <?php 
+                    include_once '../Controller/ModuloController.php';
+                    $modulo = new ModuloController();
+                    $results = $modulo->listarModulos();
+                    if($results != null)
+                    while($row = $results->fetch_object()){
+                      printf('<li data-id="'.$row->id.'" data-value="'.$row->modulo.'" >'.$row->modulo.'</li>');
+                    }
+                  ?>
                 </ul>
               </div>
           </div>
@@ -106,7 +110,7 @@
       </form>
     </section>
   </main>
-
+  <iframe style="display:none;" name="formulario" src="formulario.php"></iframe>
   <footer class="footer">
     <section class="footer-container">
       <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>

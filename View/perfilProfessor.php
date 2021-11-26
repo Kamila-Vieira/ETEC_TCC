@@ -56,7 +56,7 @@
 
   <main class="profile-main prof-profile common-main">
   <section class="form-main-container form-profile prof-form-profile">
-      <form action="/Controller/Navegacao.php" method="post" class="form-main-content">
+      <form target="formulario" method="post" class="form-main-content">
           <?php 
             include_once '../Model/Professor.php';
             include_once '../Controller/ProfessorController.php';
@@ -162,19 +162,49 @@
         </div>
         <div class="form-main-school-data form-piece">
           <h3 class="form-title">Dados acadêmicos</h3>
-          <div class="form-line modulo">
-            <span>Módulos</span>
-                <ul class="form-line-list">
+          <div class="form-line">
+            <div class="form-line-combo modulo">
+              <label class="form-line-item modulo">
+                Módulos
+                  <?php 
+                    include_once '../Controller/ProfessorController.php';
+                    
+                    if(!isset($_SESSION))
+                    {
+                      session_start();
+                    }
+                    $professor = new ProfessorController();
+                    $result = $professor->visualizarProfessor($_POST['id']);
+                    if($result){
+                      include_once '../Controller/ModuloController.php';
+                      $modulo = new ModuloController();
+                      $results = $modulo->listarModulosPorProfessor($_POST['id']);
+                      if($results != null) {
+                        while($row = $results->fetch_object()){
+                          echo '<input type="text" readonly="readonly" placeholder="Selecione o módulo" name="modulo" id="modulo" value="'.$row->modulo.'"/>';
+                        }
+                      }
+                    }
+                  ?>
+                <input type="hidden" id="moduloId" name="moduloId" value=""/>
+                <span class="form-line-item-list-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+                <ul class="form-line-item-list">
                   <?php 
                     include_once '../Controller/ModuloController.php';
                     $modulo = new ModuloController();
-                    $results = $modulo->listarModulosPorProfessor($_POST['id']);
+                    $results = $modulo->listarModulos();
                     if($results != null)
                     while($row = $results->fetch_object()){
-                      printf('<li class="form-line-list-item">'.$row->modulo.'</li>');
+                      printf('<li data-id="'.$row->id.'" data-value="'.$row->modulo.'" >'.$row->modulo.'</li>');
                     }
                   ?>
-              </ul>
+                </ul>
+              </div>
           </div>
           <div class="form-line">
             <label class="form-line-item login">Login
@@ -212,19 +242,21 @@
           </div>
         </div>
         <div class="form-main-submit form-piece">
-          <button class="form-main-submit-button" name="btnAtualizarProf">Salvar cadastro</button>
+          <button class="form-main-submit-button" name="btnAtualizarProf">Salvar dados</button>
         </div>
       </form>
     </section>
   
   </main>
-
+  <iframe style="display:none;" name="formulario" src="formulario.php"></iframe>
   <footer class="footer">
-  <section class="footer-container">
-    <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
-  </section>
-</footer>
-<script src="/View/assets/scripts/main.js"></script>
+    <section class="footer-container">
+      <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
+    </section>
+  </footer>
+  <script src="/View/assets/scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="/View/assets/scripts/jquery.maskedinput.min.js" type="text/javascript"></script>  
+  <script src="/View/assets/scripts/main.js"></script>
 </body>
 
 </html>

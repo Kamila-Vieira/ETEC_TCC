@@ -21,33 +21,31 @@
     include_once '../View/areaCoordenador.php';
   }
   if(isset($_POST["btnLoginCoordenador"])){
-   include_once '../View/areaCoordenador.php';
+    require_once '../Controller/CoordernadorController.php';
+    $coordenadorController = new CoordenadorController();
 
-    // require_once '../Controller/CoordernadorController.php';
-    // $coordenadorController = new CoordenadorController();
-
-    // if($coordenadorController->login($_POST['loginCR'], $_POST['senhaCR']))
-    // {
-    //   include_once '../View/areaCoordenador.php';
-    // }
-    // else
-    // {
-    //   include_once '../View/acessoNaoAutorizado.php';
-    // }
+    if($coordenadorController->login($_POST['loginCR'], $_POST['senhaCR']))
+    {
+      include_once '../View/areaCoordenador.php';
+    }
+    else
+    {
+      include_once '../View/acessoNaoAutorizado.php';
+    }
   }
-  if(isset($_POST["btnLogin"])){
-    include_once '../View/areaProfessor.php';
-    // require_once '../Controller/ProfessorController.php';
-    // $professorController = new ProfessorController();
 
-    // if($professorController->login($_POST['loginPR'], $_POST['senhaPR']))
-    // {
-    //   include_once '../View/areaProfessor.php';
-    // }
-    // else
-    // {
-    //   include_once '../View/acessoNaoAutorizado.php';
-    // }
+  if(isset($_POST["btnLogin"])){
+    require_once '../Controller/ProfessorController.php';
+    $professorController = new ProfessorController();
+    $login = $professorController->login($_POST['login'], $_POST['senha']);
+    if($login)
+    {
+      include_once '../View/areaProfessor.php';
+    }
+    else
+    {
+      include_once '../View/acessoNaoAutorizado.php';
+    }
   }
   
   if(isset($_POST["btnLogout"])){
@@ -56,8 +54,9 @@
       session_destroy(); 
       include_once '../View/home.php';
     }
-
   }
+
+  //Menu Navegação
   if(isset($_POST["btnProfForm"])){
     include_once '../View/formularioProfessores.php';
   }
@@ -88,7 +87,7 @@
     require_once '../Controller/AlunoController.php';
 
     $alunoController = new AlunoController();
-    $insert = $alunoController->inserirAluno($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['moduloid'], $_POST['datadeinicio'], $_POST['datadetermino'],$_POST['datadenascimento']);
+    $insert = $alunoController->inserirAluno($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['moduloId'], $_POST['datadeinicio'], $_POST['datadetermino'],$_POST['datadenascimento']);
     
     if($insert)
     {
@@ -123,7 +122,7 @@
     require_once '../Controller/ProfessorController.php';
 
     $professorController = new ProfessorController();
-    $update = $professorController->atualizarProfessor($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['datadenascimento']);
+    $update = $professorController->atualizarProfessor($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['login'], $_POST['senha'], $_POST['datadenascimento'], $_POST['moduloId'], $_POST['modulo']);
 
     if($update)
     {
@@ -135,9 +134,8 @@
 
   if(isset($_POST["btnAtualizarAluno"])){
     require_once '../Controller/AlunoController.php';
-
     $alunoController = new AlunoController();
-    $update = $alunoController->atualizarAluno($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['moduloid'], $_POST['datadeinicio'], $_POST['datadetermino'],$_POST['datadenascimento']);
+    $update = $alunoController->atualizarAluno($_POST['id'], $_POST['nome'], $_POST['celular'], $_POST['rg'], $_POST['cpf'], $_POST['moduloId'], $_POST['datadeinicio'], $_POST['datadetermino'],$_POST['datadenascimento']);
     
     if($update)
     {

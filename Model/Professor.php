@@ -108,15 +108,9 @@ class Professor
     if ($connection->query($sql) === true) {
       $this->id = mysqli_insert_id($connection);
       $connection->close();
-      printf('  ');
-      printf($sql);
       return true;
     } else {
       $connection->close();
-      printf($this->id);
-      //printf('não foi');
-      printf('  ');
-      printf($sql);
       return false;
     }
   }
@@ -127,23 +121,16 @@ class Professor
     if ($connection->connect_error) {
       die("Connection failed: " . $connection->connect_error);
     }
-
-    $sql = "SELECT * FROM `professores` WHERE `login` = ".$login;
+    $sql = "SELECT * FROM `professores` WHERE `login` = '".$login."'";
+    
     $response = $connection->query($sql);
     $data = $response->fetch_object();
-
+    
     if($data != null)
     {
-      $this->id = $data->id;
-      $this->nome = $data->nome;
-      $this->telefoneCelular = $data->telefoneCelular;
-      $this->rg = $data->rg;
-      $this->cpf = $data->cpf;
-      $this->login = $data->login;
       $this->senha = $data->senha;
-      $this->dataNascimento = $data->dataNascimento;
       $connection->close();
-      return true;
+      return $data;
     }
     else
     {
@@ -161,7 +148,7 @@ class Professor
 
     $sql = "UPDATE `professores` SET `nome` = '".$this->nome."', `telefoneCelular` = '".$this->telefoneCelular."', `rg` = '".$this->rg."', `cpf` = '".$this->cpf."', 
     `login`='".$this->login."', `senha`='".$this->senha."', `dataNascimento` = '".$this->dataNascimento."' WHERE `id` ='".$this->id."'" ;
-
+      
     if ($connection->query($sql) === true) {
       $connection->close();
       return true;

@@ -77,6 +77,23 @@
       }
     }
 
+    public function atualizar()
+    {
+      $connection = $this->database->conectar();
+      if ($connection->connect_error) {
+        die("Connection failed: " . $connection->connect_error);
+      }
+
+      $sql = "UPDATE `modulos` SET `modulo` = '".$this->modulo."', `professorId` = '".$this->professorId."' WHERE `id` ='".$this->id."'" ;
+
+      if ($connection->query($sql) === true) {
+        $connection->close();
+        return true;
+      } else {
+        $connection->close();
+        return false;
+      }
+    }
     public function listarPorProfessor($professorId)
     {
       $connection = $this->database->conectar();

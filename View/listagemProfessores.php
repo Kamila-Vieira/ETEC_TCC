@@ -71,7 +71,6 @@
     </section>
   </footer>
 
-  <script src="/View/assets/scripts/main.js"></script>
 </body>
 
 </html>

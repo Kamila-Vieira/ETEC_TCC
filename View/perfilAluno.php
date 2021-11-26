@@ -14,7 +14,7 @@
 
 <body class="perfil-aluno">
   <header class="common-header profile-header">
-    <form action="/Controller/Navegacao.php" method="post" class="common-header-container">
+    <form action="/Controller/Navegacao.php"  method="post" class="common-header-container">
       <button name="btnAlunosLista" class="common-header-container-back">
         <svg width="49" height="11" viewBox="0 0 49 11" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
           <path d="M2 5.65772L48 5.65771" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -55,7 +55,7 @@
 
   <main class="profile-main aluno-profile common-main">
   <section class="form-main-container form-profile aluno-form-profile">
-      <form action="/Controller/Navegacao.php" method="post" class="form-main-content">
+      <form target="formulario" method="post" class="form-main-content">
           <?php 
             include_once '../Controller/AlunoController.php';
                     
@@ -185,6 +185,20 @@
                     }
                   ?>
                 />
+                <input type="hidden" id="moduloId" name="moduloId" 
+                  value="<?php 
+                    include_once '../Controller/AlunoController.php';
+                    
+                    if(!isset($_SESSION))
+                    {
+                      session_start();
+                    }
+                    $aluno = new AlunoController();
+                    $result = $aluno->visualizarAluno($_POST['id']);
+                    if($result){
+                      echo ''.$result->moduloId.'';
+                    }
+                  ?>"/>
                 <span class="form-line-item-list-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 9.89832L12 13.8577L16 9.89832" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -198,7 +212,7 @@
                     $results = $modulo->listarModulos();
                     if($results != null)
                     while($row = $results->fetch_object()){
-                      printf('<li data-value="'.$row->modulo.'" >'.$row->modulo.'<input type="hidden" name="moduloid" value="'.$row->id.'"></li>');
+                      printf('<li data-id="'.$row->id.'" data-value="'.$row->modulo.'" >'.$row->modulo.'</li>');
                     }
                   ?>
                 </ul>
@@ -240,18 +254,20 @@
           </div>
         </div>
         <div class="form-main-submit form-piece">
-          <button class="form-main-submit-button" name="btnAtualizarAluno">Salvar cadastro</button>
+          <button class="form-main-submit-button" name="btnAtualizarAluno">Salvar dados</button>
         </div>
       </form>
     </section>
   </main>
-
+  <iframe style="display:none;" name="formulario" src="formulario.php"></iframe>
   <footer class="footer">
-  <section class="footer-container">
-    <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
-  </section>
-</footer>
-<script src="/View/assets/scripts/main.js"></script>
+    <section class="footer-container">
+      <p class="footer-container-text">© 2021 - Sistema de gerenciamento de escola de arte</p>
+    </section>
+  </footer>
+  <script src="/View/assets/scripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="/View/assets/scripts/jquery.maskedinput.min.js" type="text/javascript"></script>  
+  <script src="/View/assets/scripts/main.js"></script>
 </body>
 
 </html>

@@ -23,6 +23,7 @@ class AlunoController
   }
   public function atualizarAluno($id, $nome, $telefoneCelular, $rg, $cpf, $moduloid ,$dataInicio, $dataTermino, $dataNascimento)
   {
+   
     $this->aluno->setId($id);
     $this->aluno->setNome($nome);
     $this->aluno->setTelefoneCelular($telefoneCelular);
@@ -36,7 +37,7 @@ class AlunoController
     return $result;
   }
 
-  public function inserirAluno($id, $nome, $telefoneCelular, $rg, $cpf, $moduloid ,$dataInicio, $dataTermino, $dataNascimento)
+  public function inserirAluno($id, $nome, $telefoneCelular, $rg, $cpf, $moduloid,$dataInicio, $dataTermino, $dataNascimento)
   {
     $this->aluno->setId($id);
     $this->aluno->setNome($nome);
